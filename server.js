@@ -30,8 +30,7 @@ function requireApiKey(req, res, next) {
 
 // Middleware: Rate limiting (per API key, 1 req/min)
 const limiter = rateLimit({
-  // windowMs: 60 * 1000,
-  windowMs: 100, // temp rate limit for development
+  windowMs: 60 * 1000,
   max: 1,
   keyGenerator: (req) => req.headers["x-api-key"] ?? ipKeyGenerator(req),
   handler: (req, res) => {
@@ -57,7 +56,7 @@ import { DateTime } from "luxon";
 const OPENSKY_USERNAME = process.env.OPENSKY_USERNAME;
 const OPENSKY_PASSWORD = process.env.OPENSKY_PASSWORD;
 const POLL_INTERVAL_MS = 60 * 1000; // 1 minute
-const ACTIVE_HOURS = { start: 7, end: 23 }; // 6am - 11pm local time
+const ACTIVE_HOURS = { start: 7, end: 23 }; // 7am - 11pm local time
 
 function isWithinActiveHours(lat, lon) {
   const [timezone] = geoTz.find(lat, lon);
