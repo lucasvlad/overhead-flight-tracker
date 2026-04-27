@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.4.1",
+    "geo-tz": "^8.1.6",
+    "luxon": "^3.7.2",
+    "node-fetch": "^3.3.2"
+  },
+  "type": "module"
+}
