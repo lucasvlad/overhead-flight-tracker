@@ -295,6 +295,22 @@ app.get("/flights", (req, res) => {
   res.json({ flights });
 });
 
+// RENDER Keep Alive
+const RENDER_URL = process.env.RENDER_URL;
+
+if (RENDER_URL) {
+  setInterval(
+    async () => {
+      try {
+        await fetch(`${RENDER_URL}/hello`);
+      } catch (err) {
+        console.error("[Keepalive] ping failed: ", err.message);
+      }
+    },
+    10 * 60 * 1000,
+  );
+}
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
